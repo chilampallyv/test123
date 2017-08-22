@@ -21,7 +21,7 @@ stage('Preparation') {
 
 steps {
 
-git'https://github.com/chilampallyv/test123.git'
+git'git@github.com:chilampallyv/test123.git'
 
 
 }
@@ -36,7 +36,7 @@ stage('Compile') {
 steps {
 
 
-sh 'mvn clean compile'
+sh 'mvn -f myfirstmaven/pom.xml clean compile'
 
 echo 'Compiling.'
 
@@ -50,7 +50,7 @@ stage('Testing') {
 steps {
 
 
-sh 'mvn test'
+ sh 'mvn -f myfirstmaven/pom.xml test'
 
 echo 'Testing..'
 
@@ -64,7 +64,7 @@ stage('Deploy') {
 steps {
 
 
-sh 'mvn deploy'
+sh 'mvn -f myfirstmaven/pom.xml deploy'
 
 echo 'Building..'
 
