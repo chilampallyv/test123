@@ -1,0 +1,78 @@
+pipeline {
+
+agent {
+
+label "master"
+
+}
+
+tools{
+
+maven 'Maven3.3' 
+
+
+}
+
+
+stages {
+
+stage('Preparation') {
+
+
+steps {
+
+git'https://github.com/chilampallyv/test123.git'
+
+
+}
+
+
+}
+
+
+stage('Compile') {
+
+
+steps {
+
+
+sh 'mvn clean compile'
+
+echo 'Compiling.'
+
+}
+
+
+}
+
+stage('Testing') {
+
+steps {
+
+
+sh 'mvn test'
+
+echo 'Testing..'
+
+}
+
+
+}
+
+stage('Deploy') {
+
+steps {
+
+
+sh 'mvn deploy'
+
+echo 'Building..'
+
+}
+
+
+}
+
+}
+
+}
